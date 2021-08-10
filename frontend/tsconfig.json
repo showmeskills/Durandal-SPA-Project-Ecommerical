@@ -1,0 +1,23 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "amd",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "removeComments": false,
+    "noEmitOnError": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "noImplicitUseStrict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "allowUnreachableCode": false,
+    "esModuleInterop":true,
+    "baseUrl": "src/app"
+  },
+  "exclude":[
+    "src/lib",
+    "node_modules"
+  ]
+}
