@@ -26,14 +26,15 @@ export class Dashboard {
         console.log("******activate*******");
     }
     canDeactivate() {
+        app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE],false);
         return app.showMessage("are you sure to log out","Log out",["YES","NO"])
     }
     deactivate() {
+        app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE],true);
         console.log("******callback?*******")
     }
     onToLogout() {
         app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.LOGGED_IN],false)
-        app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE],true);
         router.navigate("#home")
     }
 

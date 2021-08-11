@@ -13,6 +13,7 @@ import { ShellMenu } from "./shellMenu";
 export class Shell{
     public router =rtr;
     public defaultPage = {route:"",moduleId:"viewmodels/Home/index"};
+    isVisible = ko.observable(eCommercialStoreImpl.isVisible);
     mapRouters = ko.observableArray([
         this.defaultPage,
         {route:"home",moduleId:"viewmodels/Home/index",title:"Home",nav:true},
@@ -27,7 +28,7 @@ export class Shell{
             eCommercialStoreImpl.isLoggedIn = value;
         })
         app.on(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE]).then((value:boolean)=>{
-            eCommercialStoreImpl.isVisible = value;
+            this.isVisible(value);
         })
         return this.router.map(
             this.mapRouters())
