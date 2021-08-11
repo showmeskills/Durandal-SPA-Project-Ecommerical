@@ -1,0 +1,6 @@
+
+
+//SUBSCRIPTIONS
+export enum SUBSCRIPTIONS{
+    LOGGED_IN,
+}
