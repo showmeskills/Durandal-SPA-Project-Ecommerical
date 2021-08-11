@@ -13,7 +13,6 @@ import { ShellMenu } from "./shellMenu";
 export class Shell{
     public router =rtr;
     public defaultPage = {route:"",moduleId:"viewmodels/Home/index"};
-    public isLogged = true;
     mapRouters = ko.observableArray([
         this.defaultPage,
         {route:"home",moduleId:"viewmodels/Home/index",title:"Home",nav:true},
@@ -24,21 +23,18 @@ export class Shell{
         {route:"notfound",moduleId:"viewmodels/NotFound/index"}
     ])
     activate(){
-        const logonRole = $("div#app").attr("data-role");
+        app.on(SUBSCRIPTIONS[SUBSCRIPTIONS.LOGGED_IN]).then((value:boolean)=>{
+            eCommercialStoreImpl.isLoggedIn = value;
+        })
+        app.on(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE]).then((value:boolean)=>{
+            eCommercialStoreImpl.isVisible = value;
+        })
         return this.router.map(
             this.mapRouters())
             .buildNavigationModel()
             .mapUnknownRoutes("viewmodels/NotFound/index","404/not-found")
             .activate();
     }
-    isRouteShow(){
-        // console.log(window.location.href.toString());    
-        // this.router.routes.map((route)=>{
-        //     console.log(route);
-        // })
-        return true;
-    }
-  
 }
 
 export const shell = new Shell();

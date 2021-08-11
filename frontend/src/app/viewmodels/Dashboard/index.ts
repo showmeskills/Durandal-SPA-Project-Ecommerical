@@ -13,8 +13,11 @@ export class Dashboard {
     }
     canActivate() {  
         if(eCommercialStoreImpl.isLoggedIn){
+            router.navigate("#dashboard")
+            app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE],false);
             return eCommercialStoreImpl.isLoggedIn;
         }else{
+            router.navigate("#home");
             return eCommercialStoreImpl.isLoggedIn;
         }  
        
@@ -29,6 +32,8 @@ export class Dashboard {
         console.log("******callback?*******")
     }
     onToLogout() {
+        app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.LOGGED_IN],false)
+        app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE],true);
         router.navigate("#home")
     }
 

@@ -2,5 +2,6 @@
 
 
 export interface ECommercialStore{
-    isLoggedIn: boolean;
+     isLoggedIn: boolean;
+     isVisible: boolean;
 }

@@ -9,9 +9,13 @@ import observable from "plugins/observable";
 
 export class ECommercialStoreImpl implements ECommercialStore{
     isLoggedIn:boolean = false;
+    isVisible:boolean = true;
     constructor(){
         observable(this,"LOGGED_IN").subscribe((value)=>{
             app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.LOGGED_IN],this.isLoggedIn)
+        })
+        observable(this,"ISVISIBLE").subscribe((value)=>{
+            app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE],this.isVisible)
         })
     }
 }
