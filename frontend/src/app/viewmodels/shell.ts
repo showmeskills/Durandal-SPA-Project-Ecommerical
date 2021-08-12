@@ -13,25 +13,26 @@ import {onWindowResize} from "../utils/onWindowResize";
 
 export class Shell{
     public router =rtr;
-    public defaultPage = {route:"*details",moduleId:"viewmodels/Home/index"};
+    // public defaultPage = {route:"*details",moduleId:"viewmodels/Home/index"};
     isVisible = ko.observable(eCommercialStoreImpl.isVisible);
     isNavbarShowBottom = ko.observable(false);
     mapRouters = ko.observableArray([
-        this.defaultPage,
-        {route:"home*details",moduleId:"viewmodels/Home/index",title:"Home",nav:true},
+        //this.defaultPage,
+        {route:["","home"],moduleId:"viewmodels/Home/index",},
+        {route:"products*details",moduleId:"viewmodels/Products/index",title:"P-List",nav:true},
         {route:"login",moduleId:"viewmodels/Login/index",title:'Member Login',nav:true},
-        {route:"register",moduleId:"viewmodels/Register/index",title:'Member Join',nav:true},
-        {route:"cart",moduleId:"viewmodels/Cart/index",title:"Cart",nav:true},
+        {route:"register",moduleId:"viewmodels/Register/index",title:"Register",nav:true},
+        {route:"cart",moduleId:"viewmodels/Cart/index",title:"My Cart",nav:true},
         {route:"dashboard",moduleId:"viewmodels/Dashboard/index"},
         {route:"notfound",moduleId:"viewmodels/NotFound/index"}
     ])
-    onResize(){
-        const resizeWidth = Math.ceil(onWindowResize.widthSize() * 0.8);
-        if(resizeWidth <= 962){
-            // this.isNavbarShowBottom(true);
-        }
-        console.log(resizeWidth)
-    }
+    // onResize(){
+    //     const resizeWidth = Math.ceil(onWindowResize.widthSize() * 0.8);
+    //     if(resizeWidth <= 962){
+    //         // this.isNavbarShowBottom(true);
+    //     }
+    //     console.log(resizeWidth)
+    // }
     public activate(){
         app.on(SUBSCRIPTIONS[SUBSCRIPTIONS.LOGGED_IN]).then((value:boolean)=>{
             eCommercialStoreImpl.isLoggedIn = value;
@@ -40,8 +41,8 @@ export class Shell{
             this.isVisible(value);
         })
         
-        this.onResize();
-        window.addEventListener('resize',this.onResize);
+        // this.onResize();
+        // window.addEventListener('resize',this.onResize);
         
 
         return this.router.map(
@@ -51,7 +52,10 @@ export class Shell{
             .activate();
     }
     deactivate(){
-        window.removeEventListener('resize',this.onResize);
+        // window.removeEventListener('resize',this.onResize);
+    }
+    onGoToHomePage(){
+        rtr.navigate("");
     }
 }
 

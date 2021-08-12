@@ -1,0 +1,13 @@
+<section>
+    <h1 data-bind="text:products.title"></h1>
+    <ul style="list-style-type: none; margin-top:20px;overflow: hidden;" data-bind="foreach:router.navigationModel">
+        <li style="margin-top:5px;">
+            <button class="btn btn-success"
+                data-bind="click:function($data){$parent.products.onToDetailPage($data)},text:title"></button>
+        </li>
+    </ul>
+    <div class="col-md-10" style="padding: 0">
+        <!--ko router: { transition:'entrance', cacheViews:true }-->
+        <!--/ko-->
+    </div>
+</section>
