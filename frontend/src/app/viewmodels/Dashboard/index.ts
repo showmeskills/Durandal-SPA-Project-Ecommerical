@@ -31,10 +31,10 @@ export class Dashboard {
     }
     deactivate() {
         app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE],true);
+        app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.LOGGED_IN],false)
         console.log("******callback?*******")
     }
     onToLogout() {
-        app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.LOGGED_IN],false)
         router.navigate("#home")
     }
 
