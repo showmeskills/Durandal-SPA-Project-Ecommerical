@@ -2,7 +2,7 @@
 /// <reference path="../../../lib/typings/durandal/durandal.d.ts" />
 
 import {SUBSCRIPTIONS} from "../../utils/constants";
-import {eCommercialStoreImpl} from "../../datastore/impl/eCommericalStoreImp";
+import {storeImpl} from "../../datastore/impl/storeImpl";
 import * as router from "plugins/router";
 import ko from "knockout";
 import app from "durandal/app";
@@ -12,13 +12,13 @@ export class Dashboard {
         this.title = ko.observable("Dashboard Page");
     }
     canActivate() {  
-        if(eCommercialStoreImpl.isLoggedIn){
+        if(storeImpl.isLoggedIn){
             router.navigate("#dashboard")
             app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE],false);
-            return eCommercialStoreImpl.isLoggedIn;
+            return storeImpl.isLoggedIn;
         }else{
             router.navigate("#home");
-            return eCommercialStoreImpl.isLoggedIn;
+            return storeImpl.isLoggedIn;
         }  
        
     }

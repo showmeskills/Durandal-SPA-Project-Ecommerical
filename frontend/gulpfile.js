@@ -56,8 +56,8 @@ const libHandler = () => {
 }
 
 const assetsHandler = () => {
-    return gulp.src(path.join(__dirname, "src", "lib", "**"))
-        .pipe(gulp.dest(path.join(__dirname, "dist", "lib")))
+    return gulp.src(path.join(__dirname, "src", "assets", "**"))
+        .pipe(gulp.dest(path.join(__dirname, "dist", "assets")))
 }
 
 const delHandler = () => {

@@ -4,7 +4,7 @@
 import ko from "knockout";
 import * as router from "plugins/router";
 
-import {eCommercialStoreImpl} from "../../datastore/impl/eCommericalStoreImp";
+import {storeImpl} from "../../datastore/impl/storeImpl";
 
 export class Cart{
     title:KnockoutObservable<string>;
@@ -12,9 +12,10 @@ export class Cart{
         this.title = ko.observable("Cart Page")
     }
     canActivate(){
-        if(eCommercialStoreImpl.isLoggedIn){
+        
+        if(storeImpl.isLoggedIn){
             router.navigate("#dashboard");
-            return eCommercialStoreImpl.isLoggedIn;
+            return storeImpl.isLoggedIn;
         }else{
             router.navigate("#login");
             return true;

@@ -7,7 +7,7 @@ const babel = require('gulp-babel');
 const tsConfig = require("./tsconfig.json");
 const sourcemaps = require("gulp-sourcemaps");
 const compileTypescript = () => {
-    const {compilerOptions} = tsConfig
+    const { compilerOptions } = tsConfig
     return gulp.src(path.join(__dirname, 'src', "**", "*.ts"))
         .pipe(ts(compilerOptions))
         .pipe(sourcemaps.init())
@@ -23,10 +23,38 @@ const deleteDist = () => {
     return del(['./dist'])
 }
 
-const watchHandler = ()=>{
-    gulp.watch("./src/**/*.ts",compileTypescript)
+const ejsHandler = () => {
+    return gulp.src(path.join(__dirname, "src", "views", "*.ejs"))
+        .pipe(gulp.dest(path.join(__dirname, "dist", "views")))
+}
+const keys = ()=>{
+    return gulp.src(path.join(__dirname, "src", "config", "*.pem"))
+    .pipe(gulp.dest(path.join(__dirname, "dist", "config")))
+}
+const mockData = ()=>{
+    return gulp.src(path.join(__dirname, "src", "mockData", "*.json"))
+    .pipe(gulp.dest(path.join(__dirname, "dist", "mockData")))
+}
+
+const watchHandler = () => {
+    gulp.watch("./src/**/*.ts", compileTypescript)
 };
 
-const buildStart = gulp.series(deleteDist,compileTypescript,watchHandler)
+let build = null;
 
-module.exports.default = buildStart;
+if (process.env.NODE_ENV === "development") {
+    build = gulp.series(
+        deleteDist,
+        gulp.parallel(compileTypescript, ejsHandler,keys,mockData),
+        watchHandler)
+}
+
+if (process.env.NODE_ENV === "production") {
+    build = gulp.series(deleteDist,
+        gulp.parallel(compileTypescript, ejsHandler,keys,mockData))
+}
+
+
+
+module.exports.build = build;
+

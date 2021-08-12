@@ -4,6 +4,8 @@
 import * as rtr from "plugins/router";
 import ko from "knockout";
 
+import { storeImpl } from "../../datastore/impl/storeImpl";
+
 export class Products{
     title: KnockoutObservable<string>;
     productsChildRouter: DurandalRootRouter;
@@ -17,7 +19,8 @@ export class Products{
             .buildNavigationModel();
     }
     activate() {
-        return 
+        console.log("storeImpl.productList====>",storeImpl.productList)
+        return true;
     }
     onToDetailPage(data) {
         const { hash } = data;

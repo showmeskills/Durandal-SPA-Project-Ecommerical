@@ -3,6 +3,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "amd",
+    "lib": ["dom", "scripthost", "es2015", "es2015.promise", "es2015.core"],
     "noImplicitAny": false,
     "sourceMap": true,
     "removeComments": false,

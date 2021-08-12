@@ -1,0 +1,36 @@
+{
+    "productList":[
+        {
+            "productId":0,
+            "productName":"Jacket",
+            "productPrice":149,
+            "productsDesc":"Very beautiful",
+            "productCategory":"Summer",
+            "productsImgUrl":"http://localhost:3000/assets/images/1.jpg"
+        },
+        {
+            "productId":2,
+            "productName":"Jacket Two",
+            "productPrice":189,
+            "productsDesc":"Very beautiful",
+            "productCategory":"Summer",
+            "productsImgUrl":"http://localhost:3000/assets/images/2.jpg"
+        },
+        {
+            "productId":3,
+            "productName":"Jacket Three",
+            "productPrice":289,
+            "productsDesc":"Very beautiful",
+            "productCategory":"Winter",
+            "productsImgUrl":"http://localhost:3000/assets/images/3.jpg"
+        },
+        {
+            "productId":4,
+            "productName":"Jacket Four",
+            "productPrice":289,
+            "productsDesc":"Very beautiful",
+            "productCategory":"Winter",
+            "productsImgUrl":"http://localhost:3000/assets/images/4.jpg"
+        }
+    ]
+}

@@ -4,4 +4,5 @@
 export enum SUBSCRIPTIONS{
     LOGGED_IN,
     IS_VISIBLE,
+    PRODUCT_LIST,
 }

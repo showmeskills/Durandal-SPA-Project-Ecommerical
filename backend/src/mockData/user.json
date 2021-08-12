@@ -1,0 +1,14 @@
+{
+    "user":[
+        {
+            "userId":0,
+            "username":"",
+            "password":"",
+            "buy":{
+                "productId":"",
+                "productsDetails":"",
+                "totalBuy":0
+            }
+        }
+    ]
+}
