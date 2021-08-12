@@ -13,12 +13,12 @@ import {onWindowResize} from "../utils/onWindowResize";
 
 export class Shell{
     public router =rtr;
-    public defaultPage = {route:"",moduleId:"viewmodels/Home/index"};
+    public defaultPage = {route:"*details",moduleId:"viewmodels/Home/index"};
     isVisible = ko.observable(eCommercialStoreImpl.isVisible);
     isNavbarShowBottom = ko.observable(false);
     mapRouters = ko.observableArray([
         this.defaultPage,
-        {route:"home",moduleId:"viewmodels/Home/index",title:"Home",nav:true},
+        {route:"home*details",moduleId:"viewmodels/Home/index",title:"Home",nav:true},
         {route:"login",moduleId:"viewmodels/Login/index",title:'Member Login',nav:true},
         {route:"register",moduleId:"viewmodels/Register/index",title:'Member Join',nav:true},
         {route:"cart",moduleId:"viewmodels/Cart/index",title:"Cart",nav:true},
