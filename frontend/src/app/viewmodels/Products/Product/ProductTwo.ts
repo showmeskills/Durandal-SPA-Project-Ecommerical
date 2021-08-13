@@ -4,10 +4,15 @@
 import * as rtr from "plugins/router";
 import ko from "knockout"
 
+import {products} from "../index";
 export class ProductTwo{
-    title = ko.observable("Product detail 2 page");
+    productsWinter = null;
     constructor(){}
+    activate(){
+        this.productsWinter = products.productsWinter
+    }
 }
 
 export const productTwo = new ProductTwo();
+export const activate = () => productTwo.activate();
 

@@ -6,6 +6,7 @@ import ko from "knockout";
 import system from "durandal/system";
 import app from "durandal/app";
 
+import {storeImpl} from "../../datastore/impl/storeImpl";
 import { ajax } from "../../services/request/safeReqimpl";
 import {SUBSCRIPTIONS} from "../../utils/constants";
 
@@ -40,17 +41,16 @@ export class Home {
             .catch((error) => {
                 system.log("error====>", error);
             })
-        ajax("http://localhost:3100/api/products", "get")
-            .then((response: ProductsList) => {
-                const {productList} = response
-                this.productList(productList)
-                app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.PRODUCT_LIST],productList)
-            })
-            .catch((error) => {
-                system.log("error====>", error);
-            })
+    }
+    canActivate(){
+       
+        return true;
     }
     activate() {
+        if(storeImpl.productList.length>0){
+            this.productList(storeImpl.productList)
+        }
+
         if (this.carousel().length > 0) return;
 
         return this.getData();

@@ -1,3 +1,18 @@
 <section>
-    <h1 data-bind="text:productTwo.title"></h1>
+    <div class="row" data-bind="foreach:productTwo.productsWinter">
+        <div class="col-lg-6 col-md-12">
+            <div class="thumbnail">
+                <img data-bind="attr:{src:productsImgUrl}" alt="...">
+                <div class="caption">
+                    <h3><span data-bind="text:productName"></span></h3>
+                    <p>Info:<span data-bind="text:productsDesc"></span></p>
+                    <p>Price:$<span data-bind="text:productPrice"></span></p>
+                    <p>Category:<span data-bind="text:productCategory"></span></p>
+                    <p>
+                        <button href="#" class="btn btn-primary" >View Details</button>
+                        <button href="#" class="btn btn-default" >Add to Cart</button>
+                    </p>
+                </div>
+            </div>
+        </div>
 </section>

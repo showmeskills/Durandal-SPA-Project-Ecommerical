@@ -2,12 +2,19 @@
 /// <reference path="../../../../lib/typings/knockout/knockout.d.ts" />
 
 import * as rtr from "plugins/router";
-import ko from "knockout"
+import ko from "knockout";
+
+import {products} from "../index";
 
 export class ProductOne{
-    title = ko.observable("Product detail 1 page");
+    productsSummer = null;
+    
     constructor(){}
+    activate() {
+        this.productsSummer = products.productsSummer
+    }
 }
 
 export const productOne = new ProductOne();
+export const activate = () => productOne.activate();
 

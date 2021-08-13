@@ -13,6 +13,10 @@ import {storeImpl} from "../datastore/impl/storeImpl";
 import {SUBSCRIPTIONS} from "../utils/constants";
 
 
+interface ProductsList {
+    productList: ProductListArray[]
+}
+
 
 
 export class Shell{
@@ -28,16 +32,30 @@ export class Shell{
         {route:"dashboard",moduleId:"viewmodels/Dashboard/index"},
         {route:"notfound",moduleId:"viewmodels/NotFound/index"}
     ])
+    getProductsList(){
+        ajax("http://localhost:3100/api/products", "get")
+        .then((response: ProductsList) => {
+            const {productList} = response
+            app.trigger(SUBSCRIPTIONS[SUBSCRIPTIONS.PRODUCT_LIST],productList)
+        })
+        .catch((error) => {
+            system.log("error====>", error);
+        })
+    }
     public activate(){
+        //store products list;
+        this.getProductsList();
+        app.on(SUBSCRIPTIONS[SUBSCRIPTIONS.PRODUCT_LIST]).then((value:ProductListArray[])=>{
+            storeImpl.productList = value;
+        })
+
         app.on(SUBSCRIPTIONS[SUBSCRIPTIONS.LOGGED_IN]).then((value:boolean)=>{
             storeImpl.isLoggedIn = value;
         })
         app.on(SUBSCRIPTIONS[SUBSCRIPTIONS.IS_VISIBLE]).then((value:boolean)=>{
             this.isVisible(value);
         })
-        app.on(SUBSCRIPTIONS[SUBSCRIPTIONS.PRODUCT_LIST]).then((value:ProductListArray[])=>{
-            storeImpl.productList = value;
-        })
+      
         
 
         return this.router.map(

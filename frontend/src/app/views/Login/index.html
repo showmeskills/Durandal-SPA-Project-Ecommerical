@@ -1,5 +1,26 @@
 <section>
-    <h1 data-bind="text:login.title"></h1>
-    <button class="btn btn-primary"type="button" data-bind="click:function($data,event){login.onToRegister()}">to register</button>
-    <button class="btn btn-primary"type="button" data-bind="click:function($data,event){login.onLoggedIn()}">Login in</button>
+    <form style="padding:0 100px">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" /> Remember Me
+            </label>
+        </div>
+        <div class="text-center" style="margin-bottom: 10px;">
+            <button class="btn btn-primary btn-lg btn-block" type="button"
+                data-bind="click:function($data,event){login.onLoggedIn()}">Login</button>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success btn-lg btn-block" type="button"
+                data-bind="click:function($data,event){login.onToRegister()}">to
+                be a member</button>
+        </div>
+    </form>
 </section>

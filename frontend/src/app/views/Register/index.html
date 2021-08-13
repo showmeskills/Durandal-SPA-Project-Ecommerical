@@ -1,4 +1,20 @@
 <section>
-    <h1 data-bind="text:register.title"></h1>
-    <button class="btn btn-primary" type="button" data-bind="click:function($data){register.toLogin()}">to Login</button>
+    <form style="padding:0 100px">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Re-Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success btn-lg btn-block" type="button"
+                data-bind="click:function($data,event){login.onToRegister()}">Register</button>
+        </div>
+    </form>
 </section>
